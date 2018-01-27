@@ -140,7 +140,11 @@ router.post('/check', function (req, res, next) {
            ]
          }
 
-
+         a = {
+          "messages": [
+            {"text": "Here are some suggestions for you:"},
+          ]
+        };
         res.json(a);
       });
   } else {
