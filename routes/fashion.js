@@ -25,7 +25,19 @@ router.post('/check', function (req, res, next) {
   console.log("QUERY");
   console.log(req.query);
   if (req.body && req.body.filename) {
-    a.data = {filename: req.body.filename};
+    a = {
+      "messages": [
+        {"text": "Welcome to Aggeggio Fashion!"},
+        {
+          "attachment": {
+            "type": "image",
+            "payload": {
+              "url": "https://rockets.chatfuel.com/img/welcome.png"
+            }
+          }
+        }
+      ]
+    };
     res.json(a);
   } else {
     res.json(a);
