@@ -78,6 +78,69 @@ router.post('/check', function (req, res, next) {
           ]
         };
 
+        a ={
+          "messages": [
+             {
+               "attachment":{
+                 "type":"template",
+                 "payload":{
+                   "template_type":"generic",
+                   "image_aspect_ratio": "square",
+                   "elements":[
+                     {
+                       "title":"Horsebit Loafer Pumps",
+                       "image_url":"https://www.stories.com/Content/ProductContent/0515386001/0515386001_22_100011.jpg",
+                       "subtitle":"Designed in Paris. Ultra chic loafer pumps made from soft leather, featuring a horsebit metal buckle.",
+                       "buttons":[
+                         {
+                           "type":"web_url",
+                           "url":"https://rockets.chatfuel.com/store/shirt",
+                           "title":"View Item"
+                         }
+                       ]
+                     },
+                     {
+                       "title":"SNEAKERS STRAIGHTSET LACE IN PELLE",
+                       "image_url":"http://demandware.edgesuite.net/sits_pod68-pod69/dw/image/v2/AAQM_PRD/on/demandware.static/Sites-IT-Site/Sites-master/it/dw33d437f2/34CAW0057_A75_01.jpg?sw=800&sh=800&sm=fit",
+                       "subtitle":"",
+                       "default_action": {
+                         "type": "web_url",
+                         "url": "https://rockets.chatfuel.com/store",
+                         "messenger_extensions": true
+                       },
+                       "buttons":[
+                         {
+                           "type":"web_url",
+                           "url":"https://rockets.chatfuel.com/store/hoodie",
+                           "title":"View Item"
+                         }
+                       ]
+                     },
+                     {
+                       "title":"Slippers Argento Flirting",
+                       "image_url":"https://d2zt2hjwrvnskq.cloudfront.net/slir/w1000/media/catalog/product/cache/4/image/9df78eab33525d08d6e5fb8d27136e95/C/F/CF1803_004_1.jpg",
+                       "subtitle":"ballerine in glitter argento con ricamo in perline “flirting” a “tendina” e tacco rivestito ton-sur-ton. bordo in pelle argento, suola e fodera in pelle azzurra. made in italy",
+                       "default_action": {
+                         "type": "web_url",
+                         "url": "https://rockets.chatfuel.com/store",
+                         "messenger_extensions": true
+                       },
+                       "buttons":[
+                         {
+                           "type":"web_url",
+                           "url":"https://rockets.chatfuel.com/store/hoodie",
+                           "title":"View Item"
+                         }
+                       ]
+                     }
+                   ]
+                 }
+               }
+             }
+           ]
+         }
+
+
         res.json(a);
       });
   } else {
