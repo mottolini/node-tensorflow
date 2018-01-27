@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/fashion', fashion);
+app.use(express.static('static'));  //Support for let's encrypt
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

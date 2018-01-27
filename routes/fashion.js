@@ -15,6 +15,20 @@ router.get('/', function(req, res, next) {
   res.json(a);
 });
 
+router.post('/check', function (req, res, next) {
+  var a = {
+    data: null,
+    meta: {version: '1.0'}
+  };
+
+  if (req.body && req.body.filename) {
+    a.data = {filename: req.body.filename};
+    res.json(a);
+  } else {
+    res.json(a);
+  }
+});
+
 router.post('/profile', upload.single('avatar'), function (req, res, next) {
   // req.file is the `avatar` file 
   // req.body will hold the text fields, if there were any 
