@@ -32,7 +32,7 @@ router.post('/check', function (req, res, next) {
           "attachment": {
             "type": "image",
             "payload": {
-              "url": "https://rockets.chatfuel.com/img/welcome.png"
+              "url": req.body.filename
             }
           }
         }
