@@ -4,7 +4,8 @@ var multer  = require('multer');
 var upload = multer({ dest: 'uploads/' });
 var fs = require('fs');
 var python = require('python-shell');
-
+var http = require('http');
+var uuidv4 = require('uuid/v4');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -25,20 +26,35 @@ router.post('/check', function (req, res, next) {
   console.log("QUERY");
   console.log(req.query);
   if (req.body && req.body.filename) {
-    a = {
-      "messages": [
-        {"text": "Welcome to Aggeggio Fashion!"},
-        {
-          "attachment": {
-            "type": "image",
-            "payload": {
-              "url": req.body.filename
+    var filename = 'uploads/' + uuidv4() + '.jpg';
+    var file = fs.createWriteStream(filename);
+    var request = http.get(req.body.filename, function(response) {
+      //Save file downlades
+      response.pipe(file);
+
+      var options = {
+        args: [filename]
+      };
+      python.run('my_script.py', options, function (err, results) {
+        if (err) throw err;
+        // results is an array consisting of messages collected during execution
+        //console.log('results: %j', );
+        a = {
+          "messages": [
+            {"text": results[0]},
+            {
+              "attachment": {
+                "type": "image",
+                "payload": {
+                  "url": req.body.filename
+                }
+              }
             }
-          }
-        }
-      ]
-    };
-    res.json(a);
+          ]
+        };
+        res.json(a);
+      });
+    });
   } else {
     res.json(a);
   }
