@@ -20,7 +20,27 @@ router.post('/check', function (req, res, next) {
     data: null,
     meta: {version: '1.0'}
   };
+  console.log("BODY");
+  console.log(req.body);
+  console.log("QUERY");
+  console.log(req.query);
+  if (req.body && req.body.filename) {
+    a.data = {filename: req.body.filename};
+    res.json(a);
+  } else {
+    res.json(a);
+  }
+});
 
+router.get('/check', function (req, res, next) {
+  var a = {
+    data: null,
+    meta: {version: '1.0'}
+  };
+  console.log("BODY");
+  console.log(req.body);
+  console.log("QUERY");
+  console.log(req.query);
   if (req.body && req.body.filename) {
     a.data = {filename: req.body.filename};
     res.json(a);
